@@ -2,7 +2,14 @@
 #define _SSD1306_ERR_H_
 
 #include <esp_log.h>
+#include <esp_idf_version.h>
+#include <esp_log.h>
+
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4, 0, 0)
+#include <esp_debug_helpers.h>
+#else
 #include <esp_panic.h>
+#endif
 
 #if CONFIG_SSD1306_ERROR_ABORT
     #define SSD1306_DoAbort( ) abort( )
